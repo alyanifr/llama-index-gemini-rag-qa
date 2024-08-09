@@ -1,4 +1,4 @@
-<h1 align="center"> LlamaIndex RAG WebPageReader QnA Bot with Gemini 🤖 </h1>
+<h1 align="center">🤖 WebPageReader RAG-QnA Bot with LlamaIndex, Gemini </h1>
 
 <h5 align="center">Keywords: Python | LlamaIndex | RAG | LLM | Gemini-Pro | NLP | API | Streamlit</h5>
 <h2>Project Description</h2>
