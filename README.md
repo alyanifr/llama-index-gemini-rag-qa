@@ -1,4 +1,4 @@
-<h1 align="center"> LlamaIndex RAG WebPageReader QnA Bot with Gemini Streamlit App 🤖 </h1>
+<h1 align="center"> LlamaIndex RAG WebPageReader QnA Bot with Gemini 🤖 </h1>
 
 <h5 align="center">Keywords: Python | LlamaIndex | RAG | LLM | Gemini-Pro | NLP | API | Streamlit</h5>
 <h2>Project Description</h2>
@@ -24,6 +24,5 @@ Given a query, the router will pick one of the two query engines, QnA or Summari
   <li> Generate the API key that was used to call on the llm model.</li>
   <li> Storing the secret key in an environment file for a more efficient program architecture.</li>
 </ul>
-<h3>⚒️ Modular Architectural Design</h3>
 <h2>Conclusion</h2>
 Throughout this project, I managed to demonstrate the deployment of an easy and smooth bot-like application within a Streamlit page while also showcasing the integration of Google Gemini's llm model, and its language processing capabilities. 
