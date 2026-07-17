@@ -1,8 +1,9 @@
-llama-index==0.10.17
-google-gnerativeai
+llama-index
+google-generativeai
 llama-index-llms-gemini
 llama-index-embeddings-gemini
 llama-index-readers-web
 llama-index-vector-stores-chroma
 chromadb
 streamlit
+streamlit-chat

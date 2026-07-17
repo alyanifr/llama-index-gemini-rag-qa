@@ -4,7 +4,6 @@ import urllib.request as url
 
 
 import chromadb
-import langchain
 import streamlit as st
 from streamlit_chat import message
 import google.generativeai as genai
@@ -12,12 +11,10 @@ from bs4 import BeautifulSoup
 from llama_index.core import Document
 from llama_index.core import Settings
 from llama_index.core import StorageContext
-from llama_index.core import VectorStoreIndex, SummaryIndex, download_loader
+from llama_index.core import VectorStoreIndex, SummaryIndex
 from llama_index.core import PromptTemplate
 from llama_index.readers.web import SimpleWebPageReader
 from llama_index.core.node_parser import SentenceSplitter
-from langchain.chains.conversation.memory import ConversationBufferMemory
-from langchain.agents import initialize_agent, Tool
 from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.llms.gemini import Gemini
 from llama_index.vector_stores.chroma import ChromaVectorStore
@@ -144,7 +141,7 @@ if website_url:
         user_query = st.chat_input("Type your question here", key="input")
 
         if user_query:
-            # Query the Langchain agent with user agent
+             
             message(user_query, is_user=True)
             response = query_engine.query(user_query)
 
