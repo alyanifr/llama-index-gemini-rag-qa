@@ -23,11 +23,11 @@ documents = reader.load_data(urls=["https://blog.google/innovation-and-ai/techno
 embed_model = GoogleGenAIEmbedding(
     model_name="gemini-embedding-001",
     api_key=GOOGLE_API_KEY,
-    embedding_config=EmbedContentConfig(task_type="RETRIEVAL_DOCUMENT", output_dimensionality=200, auto_truncate=True)
+    embedding_config=EmbedContentConfig(task_type="RETRIEVAL_DOCUMENT", output_dimensionality=200)
 )
 
 # Initialize Gemini
-llm = GoogleGenAI(model="gemini-2.5-flash-lite", api_key=GOOGLE_API_KEY)
+llm = GoogleGenAI(model="gemini-3.1-flash-lite", api_key=GOOGLE_API_KEY)
 
 # Storing data using Chroma's vector
 client = chromadb.PersistentClient(path="./chroma_db")
