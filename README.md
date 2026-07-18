@@ -1,6 +1,6 @@
 <h1 align="center">🤖 WebPageReader RAG-QnA Bot with LlamaIndex, Gemini </h1>
 
-![Alt_Text](https://github.com/alyanifr/llama-index-gemini-rag-qa/blob/main/media/rag1.gif)
+<video src="https://github.com/alyanifr/llama-index-gemini-rag-qa/media/demo rag-qa.mp4" width="600" controls></video>
 
 <h5 align="center">Keywords: Python | LlamaIndex | RAG | LLM | Gemini-Pro | NLP | API | Streamlit</h5>
 <h2>Project Description</h2>
