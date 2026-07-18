@@ -4,8 +4,8 @@
 
 <h5 align="center">Keywords: Python | LlamaIndex | RAG | LLM | Gemini-Pro | NLP | API | Streamlit</h5>
 <h2>Project Description</h2>
-Developed the simplest form of agentic RAG (Retrieval-Augmented-Generation) with a router. 
-Agentic RAG is a framework designed to build research agents capable of tool use, reasoning and decision-making with given data.
+Developed the simplest form of RAG (Retrieval-Augmented-Generation) with a router. 
+RAG is a framework designed capable of tool use, reasoning and decision-making with given data.
 Given a query, the router will pick one of the two query engines, QnA or Summarization, to execute a response over a single document, in this case, a website.
 <h2>Key Features</h2>
 <h3>⚒️ Natural Language Processing</h3>
@@ -18,7 +18,6 @@ Given a query, the router will pick one of the two query engines, QnA or Summari
 <ul>
   <li> Utilizes Streamlit interface to build the web application.</li>
   <li> Users can enter a URL to a website and ask questions about the context of that website.</li>
-  <li> The conversation interface utilizes Streamlit chat-message interface.</li>
 </ul>
 <h2>Technical Workflow</h2>
 <h3>⚒️ Google's Gemini Secret Key</h3>
