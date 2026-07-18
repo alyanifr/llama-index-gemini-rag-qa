@@ -1,9 +1,10 @@
-llama-index
-google-generativeai
-llama-index-llms-gemini
-llama-index-embeddings-gemini
+streamlit
+llama-index-core
+llama-index-llms-google-genai
+llama-index-embeddings-google-genai
 llama-index-readers-web
 llama-index-vector-stores-chroma
+google-genai
 chromadb
-streamlit
-streamlit-chat
+python-dotenv
+pysqlite3-binary

@@ -1,11 +1,14 @@
 """Streamlit UI only — thin, no business logic"""
 
+__import__("pysqlite3")
+
 import sys
+sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+
 sys.path.append("./project")
 sys.path.append("..")  # Add project root 
 
 import streamlit as st
-from streamlit_chat import message
 from config import configure_llama_index
 from indexing import load_url, build_indexes
 from query_engine import router_query_engine
