@@ -2,7 +2,7 @@
 
 [Now live on Streamlit Cloud!](https://router-based-rag-bot.streamlit.app)
 
-https://github.com/user-attachments/assets/b8237b02-c397-4520-a478-55429716b6f2
+https://github.com/user-attachments/assets/e2b9b8e3-4d60-4176-af15-b8b21413bdcf
 
 <h5 align="center">Keywords: Python | LlamaIndex | RAG | LLM | Gemini-Pro | NLP | API | Streamlit</h5>
 <h2>Project Description</h2>
