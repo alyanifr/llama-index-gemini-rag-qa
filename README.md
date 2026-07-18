@@ -31,3 +31,13 @@ Given a query, the router will pick one of the two query engines, QnA or Summari
 </ul>
 <h2>Conclusion</h2>
 Throughout this project, I managed to demonstrate the deployment of an easy and smooth bot-like application within a Streamlit page while also showcasing the integration of Google Gemini's llm model, and its language processing capabilities. 
+
+<h2>Related links:</h2>
+
+[LLamaIndex Routers Documentation](https://developers.llamaindex.ai/python/framework/module_guides/querying/router/)
+
+[LLamaIndex Chroma Vector Store Documentation](https://developers.llamaindex.ai/python/framework/integrations/vector_stores/chroma_metadata_filter/)
+
+[Chroma Client Documentation](https://docs.trychroma.com/docs/run-chroma/clients)
+
+[My Streamlit Cloud Profile](https://share.streamlit.io/user/alyanifr)
