@@ -1,16 +1,17 @@
 import sys
-sys.path.insert(0, r'/Users/alyani/Documents/projects/GenAI Projects/llama-index-gemini-rag-qa')
+from pathlib import Path
 
-import os
-os.makedirs("./evaluation/data", exist_ok=True)
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "project"))
 
 from ragas.testset import TestsetGenerator
-from project.indexing import load_url
+from project.ingestion import load_document
 from project.config import llm, embed_model
 
-website_url = "https://blog.google/innovation-and-ai/technology/research/technology-global-crisis-resilience/"
+DEFAULT_URL = "https://blog.google/innovation-and-ai/technology/research/technology-global-crisis-resilience/"
+OUTPUT = ROOT / "evaluation" / "data" / "generated_testset.csv"
 
-def testset_generator(website_url: str, llm, embed_model):
+def testset_generator(website_url: str, testset_size: int = 10):
 
     # Initialize generator
     generator = TestsetGenerator.from_llama_index(
@@ -21,16 +22,16 @@ def testset_generator(website_url: str, llm, embed_model):
     # Generate testset
     print("Generating testset...")
     testset = generator.generate_with_llamaindex_docs(
-        documents=load_url(website_url),
-        testset_size=8,
+        documents=[load_document(website_url)],
+        testset_size=testset_size,
     )
 
     # Save results to csv
-    testset.to_pandas().to_csv("./evaluation/data/generated_testset.csv", index=False)
-    print("Testset saved.")
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    testset.to_pandas().to_csv(OUTPUT, index=False)
+    print(f"Testset saved to {OUTPUT}")
 
     return testset
 
-testset_generator(website_url=website_url, llm=llm, embed_model=embed_model)
-print("Testset generated.")
-
+if __name__ == "__main__":
+    testset_generator(sys.argv[1] if len(sys.argv) > 1 else DEFAULT_URL)

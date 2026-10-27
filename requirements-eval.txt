@@ -1,0 +1,9 @@
+# Extra dependencies for evaluation/ (the app itself does not need these).
+-r requirements.txt
+ragas
+pandas
+numpy
+# Ragas imports ChatVertexAI from langchain_community on some versions, which can fail.
+langchain-google-vertexai
+# After a successful run, pin the exact versions, e.g.:
+#   pip freeze | grep -i -E "^(ragas|langchain)"
