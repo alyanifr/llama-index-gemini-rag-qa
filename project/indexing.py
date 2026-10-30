@@ -5,32 +5,34 @@ sys.path.append("./project")
 sys.path.append("..")  # Add project root 
 
 import chromadb
-from llama_index.readers.web import SimpleWebPageReader
+# from llama_index.readers.web import SimpleWebPageReader
 from llama_index.core import SummaryIndex, VectorStoreIndex, StorageContext
 from llama_index.vector_stores.chroma import ChromaVectorStore
-from config import CHROMA_PATH, CHROMA_COLLECTION_NAME
+from config import CHROMA_COLLECTION_NAME
 
-# Initializing reader 
-reader = SimpleWebPageReader(html_to_text=True)
+def build_indexes(nodes):
+    """Return (summary_index, vector_index) for one page.
 
-def load_url(url: str):
-    """Fetch data ready to embed."""
-    documents = reader.load_data(urls=[url])
+    EphemeralClient keeps everything in memory, so every call starts from an
+    empty collection. A PersistentClient with a fixed collection name made
+    chunks from earlier URLs leak into answers for the current one.
+    """
+    client = chromadb.EphemeralClient()
+    # Ephemeral clients share one in-process backend, so make sure the
+    # collection is fresh even if this function was called before.
+    try:
+        client.delete_collection(CHROMA_COLLECTION_NAME)
+    except Exception:
+        pass
+    collection = client.get_or_create_collection(CHROMA_COLLECTION_NAME)
 
-    return documents
-
-def build_indexes(documents):
-
-    # Initializing chroma client and collection
-    client = chromadb.PersistentClient(path=CHROMA_PATH)
-    chroma_collection = client.get_or_create_collection(CHROMA_COLLECTION_NAME)
-
-    # Create vector store
-    vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
+    vector_store = ChromaVectorStore(chroma_collection=collection)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-    # Indexing
-    summary_index = SummaryIndex.from_documents(documents, storage_context=storage_context)
-    vector_index = VectorStoreIndex.from_documents(documents, storage_context=storage_context)
-
+    # The summary index keeps nodes in the docstore only; the vector index
+    # is the one backed by Chroma.
+    summary_index = SummaryIndex(nodes)
+    vector_index = VectorStoreIndex(nodes, storage_context=storage_context)
+    
     return summary_index, vector_index
+

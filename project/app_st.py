@@ -10,7 +10,8 @@ sys.path.append("..")  # Add project root
 
 import streamlit as st
 from config import configure_llama_index
-from indexing import load_url, build_indexes
+from ingestion import load_and_chunk_url
+from indexing import build_indexes
 from query_engine import router_query_engine
 
 # Streamlit page configuration & title
@@ -24,8 +25,8 @@ website_url = st.text_input("Enter a URL", key="url")
 if website_url and st.session_state.get("processed_url") != website_url:
     with st.spinner("Reading & indexing the page..."):
         configure_llama_index()
-        data = load_url(website_url)
-        summary_index, vector_index = build_indexes(data)
+        nodes = load_and_chunk_url(website_url)
+        summary_index, vector_index = build_indexes(nodes)
         st.session_state.query_engine = router_query_engine(summary_index, vector_index)
         st.session_state.processed_url = website_url
         st.session_state.messages = []

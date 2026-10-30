@@ -4,7 +4,11 @@ llama-index-llms-google-genai
 llama-index-embeddings-google-genai
 llama-index-readers-web
 llama-index-vector-stores-chroma
+beautifulsoup4
+requests
 google-genai
 chromadb
 python-dotenv
 pysqlite3-binary
+libsqlite3-dev
+ragas

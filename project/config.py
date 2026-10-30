@@ -25,6 +25,18 @@ embed_model = GoogleGenAIEmbedding(
     ),
 )
 
+def make_judge_embed_model():
+    """Separate embedding instance for evaluation, so the metrics are not
+    computed with the exact object (and task type) used for retrieval."""
+    return GoogleGenAIEmbedding(
+        model_name="gemini-embedding-001",
+        api_key=GOOGLE_API_KEY,
+        embedding_config=EmbedContentConfig(
+            task_type="SEMANTIC_SIMILARITY",
+            output_dimensionality=200,
+        ),
+    )
+
 def configure_llama_index():
     """Call this once, before building any index — sets the global LLM
     and embedding model so as_query_engine() picks them up correctly."""
@@ -33,4 +45,4 @@ def configure_llama_index():
 
 # Constants
 CHROMA_PATH = "./chroma_db"
-CHROMA_COLLECTION_NAME = "persist_collection"
+CHROMA_COLLECTION_NAME = "page_chunks"
