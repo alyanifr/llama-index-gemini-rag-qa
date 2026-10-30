@@ -1,8 +1,13 @@
+import os
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "project"))
+sys.path.insert(0, str(ROOT))                    # makes `project` importable
+sys.path.insert(0, str(ROOT / "evaluation")) 
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ragas_compat  # noqa: F401  (must come before ragas)
 
 from ragas.testset import TestsetGenerator
 from project.ingestion import load_document

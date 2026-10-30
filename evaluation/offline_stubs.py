@@ -70,7 +70,11 @@ class KeywordRoutingLLM(CustomLLM):
         match = re.search(r"question: '(.*?)'\s*(?:\n|$)", prompt, flags=re.DOTALL)
         if match:  # selector prompt: choice 1 = summary tool, 2 = vector tool
             question = match.group(1).lower()
-            broad = re.search(r"summar|overview|about overall|main points|main themes|overall theme|what is this", question)
+            broad = re.search(
+                r"summar|overview|main points|main themes|overall|what is this|gist|big picture"
+                r"|recap|tl;dr|take away|takeaway|start to finish|as a whole|condense",
+                question,
+            )
             choice = 1 if broad else 2
             return CompletionResponse(
                 text=json.dumps([{"choice": choice, "reason": "offline keyword stub"}])

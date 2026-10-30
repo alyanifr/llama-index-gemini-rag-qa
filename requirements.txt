@@ -10,3 +10,5 @@ google-genai
 chromadb
 python-dotenv
 pysqlite3-binary
+libsqlite3-dev
+ragas
